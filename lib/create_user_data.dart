@@ -4,6 +4,8 @@ import 'package:flutter_sqflite_db/sqflite_db/db_helper.dart';
 import 'package:flutter_sqflite_db/user_model.dart';
 
 class UserInputForm extends StatefulWidget {
+  const UserInputForm({super.key});
+
   @override
   _UserInputFormState createState() => _UserInputFormState();
 }

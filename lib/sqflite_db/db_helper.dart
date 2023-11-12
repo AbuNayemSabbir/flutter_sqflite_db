@@ -37,13 +37,34 @@ email TEXT
     final db_client = await db;
     return db_client.insert('User', user.toMap());
   }
-Future<List<User>> getUsers() async{
-final dbclient =await db;
-final List<Map<String,dynamic>> maps=await dbclient.query('User');
-return List.generate(maps.length, (index) => User(
-    id: maps[index]['id'],
-    name: maps[index]['name'],
-    email: maps[index]['email']));
 
-}
+  Future<List<User>> getUsers() async {
+    final dbclient = await db;
+    final List<Map<String, dynamic>> maps = await dbclient.query('User');
+    return List.generate(
+        maps.length,
+        (index) => User(
+            id: maps[index]['id'],
+            name: maps[index]['name'],
+            email: maps[index]['email']));
+  }
+
+  Future<int> updateUser(User user) async {
+    final dbClient = await db;
+    return await dbClient.update(
+      'User',
+      user.toMap(),
+      where: 'id = ?',
+      whereArgs: [user.id],
+    );
+  }
+
+  Future<int> deleteUser(int id) async {
+    final dbClient = await db;
+    return await dbClient.delete(
+      'User',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

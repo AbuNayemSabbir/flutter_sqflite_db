@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>DisplayUserInfoPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>UserDetailsPage()));
 
             }, child: Text("Fetch Data")),
             ElevatedButton(onPressed: (){
